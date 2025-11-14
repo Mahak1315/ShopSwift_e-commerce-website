@@ -1,0 +1,40 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+header {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+.carousel-item img {
+  height: 550px; /* or any consistent height you prefer */
+  object-fit: cover;
+  width: 100%;
+}

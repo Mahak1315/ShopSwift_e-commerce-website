@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopSwift - Your One Stop Shop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+    <a class="navbar-brand fw-bold" href="#">🛍️ ShopSwift</a>
+    <div class="ms-auto d-flex align-items-center">
+      <button class="btn btn-outline-primary me-2" onclick="scrollToCart()">🛒 Cart</button>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <!-- <header class="text-center py-5 bg-dark text-white">
+    <h1>Welcome to ShopSwift</h1>
+    <p class="lead">Your one-stop solution for all your shopping needs!</p>
+  </header> -->
+
+  <!-- carousel -->
+  <div id="ecomCarousel" class="carousel slide my-4" data-bs-ride="carousel">
+    <div class="carousel-inner rounded shadow">
+      <div class="carousel-item active">
+        <img src="photos/c3.jpg" class="d-block w-100" alt="Shopping">
+      </div>
+      <div class="carousel-item">
+        <img src="photos/c4.jpg" class="d-block w-100" alt="Ecommerce">
+      </div>
+      <div class="carousel-item">
+        <img src="photos/c5.jpg" class="d-block w-100" alt="Online Store">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#ecomCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#ecomCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!--cart items-->
+  <main class="container mt-5 mb-2">
+    <!-- <main class="container my-5"> -->
+    <h2 class="text-center mb-4" id="cart-title">🛒 Your Cart</h2>
+    <div class="card p-4 bg-light mb-5">
+      <ul class="list-group mb-3" id="cart-items">
+        <!-- Cart items go here -->
+      </ul>
+      <h5 class="text-end">Total: ₹<span id="cart-total">0</span></h5>
+    </div>
+    <!-- Toast message -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+      <div id="cart-toast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+          <div class="toast-body">✅ Added to cart</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- different goodies in the online store -->
+    <div class="row" id="product-list">
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-200">
+          <img src="photos/earbuds.jpg" alt="Wireless Earbuds">
+          <div class="card-body">
+            <h5 class="card-title">Wireless Earbuds</h5>
+            <p class="card-text">Price: ₹1999</p>
+            <button class="btn btn-primary w-100" onclick="addToCart('Wireless Earbuds', 1999)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-200">
+          <img src="photos/smartwatch1.jpg" alt="Smartwatch">
+          <div class="card-body">
+            <h5 class="card-title">Smartwatch</h5>
+            <p class="card-text">Price: ₹2999</p>
+            <button class="btn btn-primary w-100" onclick="addToCart('Smartwatch', 2999)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-200">
+          <img src="photos/snearker.jpg" alt="Sneakers">
+          <div class="card-body">
+            <h5 class="card-title">Sneakers</h5>
+            <p class="card-text">Price: ₹2499</p>
+            <button class="btn btn-primary w-100" onclick="addToCart('Sneakers', 2499)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-200">
+          <img src="photos/b1.jpg" alt="Backpack">
+          <div class="card-body">
+            <h5 class="card-title">Backpack</h5>
+            <p class="card-text">Price: ₹1299</p>
+            <button class="btn btn-primary w-100" onclick="addToCart('Backpack', 1299)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-200">
+          <img src="photos/waterbottle.jpg" alt="Water Bottle">
+          <div class="card-body">
+            <h5 class="card-title">Water Bottle</h5>
+            <p class="card-text">Price: ₹499</p>
+            <button class="btn btn-primary w-100" onclick="addToCart('Water Bottle', 499)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="loginModalLabel">Welcome Back</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-4">
+          <form onsubmit="event.preventDefault(); alert('Login functionality coming soon!');">
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Enter password" required>
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()"
+                  id="togglePasswordBtn">Show</button>
+              </div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <div class="mb-3 text-end">
+              <a href="#" class="text-decoration-none small">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </form>
+          <div class="text-center mt-3">
+            <small class="text-muted">Don't have an account? <a href="#" class="text-primary">Sign up</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+
+  <footer class="bg-dark text-white py-3 px-2 mt-5" style="margin: 0;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5>ShopSwift</h5>
+          <p>Your one-stop shop for all your needs.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Products</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Contact</h5>
+          <p>Email: support@shopswift.com</p>
+          <p>Phone: +91 9876543210</p>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        &copy; 2025 ShopSwift. All rights reserved.
+      </div>
+    </div>
+  </footer> 
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
