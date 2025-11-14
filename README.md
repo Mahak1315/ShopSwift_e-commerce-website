@@ -1,45 +1,40 @@
-🛍️ ShopSwift – E-Commerce Frontend Website
+# 🛍️ ShopSwift – E-Commerce Frontend Website
 
-A simple and responsive e-commerce frontend built using HTML, CSS, JavaScript, and Bootstrap.
-ShopSwift allows users to browse products, add items to their cart, adjust quantities, and view the total price — all using LocalStorage so the cart stays saved even after refreshing the page.
+<p align="center">
+  <img src="photos/c3.jpg" alt="ShopSwift Preview" width="80%">
+</p>
 
-🚀 Features
-✅ User Interface
+A **clean and responsive e-commerce frontend** built using **HTML, CSS, JavaScript, and Bootstrap**.  
+ShopSwift allows users to **browse products, add items to the cart, adjust quantities**, and **view the total price**. The cart persists using **LocalStorage** for a smooth user experience.
 
-Clean and modern navbar
+---
 
-Login modal
+## 🚀 Features
 
-Hero carousel with product banners
+### **✨ User Interface**
+- Responsive **Navbar** with Cart & Login modal  
+- Hero **Carousel** for promotions and banners  
+- **Product Cards** with images, names, prices & Add-to-Cart buttons  
+- **Clean Footer** with Quick Links & Contact Info  
+- Fully **Responsive Design** for desktop, tablet, and mobile  
 
-Product cards with images, name, price & Add-to-Cart button
+### **🛒 Cart Functionality**
+- Add items to cart  
+- Increase / decrease quantity  
+- Remove item automatically when quantity reaches 0  
+- Real-time **total price updates**  
+- **Toast notifications** when a product is added  
+- **LocalStorage** support for persistent cart  
 
-Responsive layout using Bootstrap
+---
 
-Simple and aesthetic footer with contact details and quick links
+## 🧰 Tech Stack
 
-🛒 Cart Functionality
+- **HTML5**  
+- **CSS3**  
+- **JavaScript (ES6)**  
+- **Bootstrap 5**  
+- **LocalStorage API**  
 
-Add items to cart
+---
 
-Increase / decrease quantity
-
-Remove item automatically when quantity reaches 0
-
-Cart persists using LocalStorage
-
-Real-time total price updates
-
-Toast notification when product is added
-
-🧱 Tech Stack
-
-HTML5
-
-CSS3
-
-JavaScript (ES6)
-
-Bootstrap 5
-
-LocalStorage API
