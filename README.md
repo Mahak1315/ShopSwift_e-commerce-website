@@ -1,11 +1,7 @@
 # 🛍️ ShopSwift – E-Commerce Frontend Website
 
----
-
 A **clean and responsive e-commerce frontend** built using **HTML, CSS, JavaScript, and Bootstrap**.  
 ShopSwift allows users to **browse products, add items to the cart, adjust quantities**, and **view the total price**. The cart persists using **LocalStorage** for a smooth user experience.
-
----
 
 ## 🚀 Features
 
@@ -24,8 +20,6 @@ ShopSwift allows users to **browse products, add items to the cart, adjust quant
 - **Toast notifications** when a product is added  
 - **LocalStorage** support for persistent cart  
 
----
-
 ## 🧰 Tech Stack
 
 - **HTML5**  
@@ -33,6 +27,3 @@ ShopSwift allows users to **browse products, add items to the cart, adjust quant
 - **JavaScript (ES6)**  
 - **Bootstrap 5**  
 - **LocalStorage API**  
-
----
-
