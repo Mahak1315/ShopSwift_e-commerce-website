@@ -3,6 +3,10 @@
 A **clean and responsive e-commerce frontend** built using **HTML, CSS, JavaScript, and Bootstrap**.  
 ShopSwift allows users to **browse products, add items to the cart, adjust quantities**, and **view the total price**. The cart persists using **LocalStorage** for a smooth user experience.
 
+## 🔗 Live Preview
+
+[View Live Site](https://mahak1315.github.io/ShopSwift_e-commerce-website/)
+
 ## 🚀 Features
 
 ### **✨ User Interface**
