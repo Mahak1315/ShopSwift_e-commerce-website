@@ -337,6 +337,81 @@ function handleLogout() {
   location.reload();
 }
 
+// ─── AI CHAT ──────────────────────────────────────────────
+
+function toggleChat() {
+  const box = document.getElementById('chat-box');
+  const isVisible = box.style.display === 'flex';
+  box.style.display = isVisible ? 'none' : 'flex';
+  if (!isVisible) {
+    document.getElementById('chat-input').focus();
+  }
+}
+
+function appendMessage(text, isUser) {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.style.cssText = `
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    max-width: 85%;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    ${isUser
+      ? 'background:#0d6efd;color:white;align-self:flex-end;margin-left:auto'
+      : 'background:#f0f4ff;color:#333;align-self:flex-start'}
+  `;
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function appendTyping() {
+  const messages = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.id = 'typing-indicator';
+  div.style.cssText = 'background:#f0f4ff;padding:10px 12px;border-radius:12px;font-size:13px;color:#888;max-width:85%';
+  div.textContent = 'Thinking...';
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function removeTyping() {
+  const typing = document.getElementById('typing-indicator');
+  if (typing) typing.remove();
+}
+
+async function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if (!message) return;
+
+  input.value = '';
+  appendMessage(message, true);
+  appendTyping();
+
+  try {
+    const response = await fetch(`${API_URL}/api/ai/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await response.json();
+    removeTyping();
+
+    if (data.reply) {
+      appendMessage(data.reply, false);
+    } else {
+      appendMessage('Sorry, I could not get a response. Please try again.', false);
+    }
+  } catch (error) {
+    removeTyping();
+    appendMessage('Something went wrong. Please try again.', false);
+  }
+}
+
 // ─── PAGE LOAD ────────────────────────────────────────────
 
 loadCart();

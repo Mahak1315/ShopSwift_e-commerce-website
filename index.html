@@ -17,7 +17,8 @@
     <a class="navbar-brand fw-bold" href="#">🛍️ ShopSwift</a>
     <div class="ms-auto d-flex align-items-center">
       <button class="btn btn-outline-primary me-2" onclick="scrollToCart()">🛒 Cart</button>
-      <button id="navbar-login-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+      <button id="navbar-login-btn" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#loginModal">Login</button>
     </div>
   </nav>
 
@@ -70,58 +71,7 @@
 
     <!-- different goodies in the online store -->
     <div class="row" id="product-list">
-      <!-- <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-200">
-          <img src="photos/earbuds.jpg" alt="Wireless Earbuds">
-          <div class="card-body">
-            <h5 class="card-title">Wireless Earbuds</h5>
-            <p class="card-text">Price: ₹1999</p>
-            <button class="btn btn-primary w-100" onclick="addToCart('Wireless Earbuds', 1999)">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-200">
-          <img src="photos/smartwatch1.jpg" alt="Smartwatch">
-          <div class="card-body">
-            <h5 class="card-title">Smartwatch</h5>
-            <p class="card-text">Price: ₹2999</p>
-            <button class="btn btn-primary w-100" onclick="addToCart('Smartwatch', 2999)">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-200">
-          <img src="photos/snearker.jpg" alt="Sneakers">
-          <div class="card-body">
-            <h5 class="card-title">Sneakers</h5>
-            <p class="card-text">Price: ₹2499</p>
-            <button class="btn btn-primary w-100" onclick="addToCart('Sneakers', 2499)">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-200">
-          <img src="photos/b1.jpg" alt="Backpack">
-          <div class="card-body">
-            <h5 class="card-title">Backpack</h5>
-            <p class="card-text">Price: ₹1299</p>
-            <button class="btn btn-primary w-100" onclick="addToCart('Backpack', 1299)">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-200">
-          <img src="photos/waterbottle.jpg" alt="Water Bottle">
-          <div class="card-body">
-            <h5 class="card-title">Water Bottle</h5>
-            <p class="card-text">Price: ₹499</p>
-            <button class="btn btn-primary w-100" onclick="addToCart('Water Bottle', 499)">Add to Cart</button>
-          </div>
-        </div>
-      </div> -->
     </div>
-
   </main>
 
   <!-- Login Modal -->
@@ -222,6 +172,52 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- AI Chat Widget -->
+  <div id="chat-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999;font-family:inherit">
+
+    <!-- Chat toggle button -->
+    <button id="chat-toggle" onclick="toggleChat()"
+      style="width:56px;height:56px;border-radius:50%;background:#0d6efd;color:white;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2)">
+      💬
+    </button>
+
+    <!-- Chat box -->
+    <div id="chat-box"
+      style="display:none;position:absolute;bottom:70px;right:0;width:320px;background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.15);overflow:hidden;flex-direction:column">
+
+      <!-- Header -->
+      <div
+        style="background:#0d6efd;color:white;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-weight:600;font-size:14px">🛍️ ShopSwift Assistant</div>
+          <div style="font-size:11px;opacity:0.85">Ask me anything about our products!</div>
+        </div>
+        <button onclick="toggleChat()"
+          style="background:none;border:none;color:white;font-size:18px;cursor:pointer">✕</button>
+      </div>
+
+      <!-- Messages -->
+      <div id="chat-messages"
+        style="height:280px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px">
+        <div style="background:#f0f4ff;padding:10px 12px;border-radius:12px;font-size:13px;color:#333;max-width:85%">
+          Hi! I'm your ShopSwift assistant 👋 Ask me things like "show me products under ₹1000" or "what electronics do
+          you have?"
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div style="padding:10px;border-top:1px solid #eee;display:flex;gap:8px">
+        <input id="chat-input" type="text" placeholder="Ask about products..."
+          style="flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:20px;font-size:13px;outline:none"
+          onkeydown="if(event.key==='Enter') sendChatMessage()">
+        <button onclick="sendChatMessage()"
+          style="padding:8px 14px;background:#0d6efd;color:white;border:none;border-radius:20px;font-size:13px;cursor:pointer">
+          Send
+        </button>
+      </div>
+
+    </div>
+  </div>
 </body>
 
 </html>
