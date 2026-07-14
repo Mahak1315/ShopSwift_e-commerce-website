@@ -1,186 +1,112 @@
-# 🛍️ ShopSwift — AI-Powered E-Commerce Application
+# ShopSwift — E-Commerce Web Application
 
-![ShopSwift Banner](photos/c3.jpg)
+![ShopSwift Banner](https://raw.githubusercontent.com/Mahak1315/ShopSwift_e-commerce-website/main/photos/c3.jpg)
 
-A full-stack e-commerce web application with real user authentication, per-user cart persistence, and an AI shopping assistant powered by Groq (Llama 3.3).
+A full-stack e-commerce application with user authentication, persistent cart management, and an AI-powered shopping assistant.
 
-## 🌐 Live Demo
-
-**👉 [Click here to view the live app](https://mahak1315.github.io/ShopSwift_e-commerce-website/)**
+🔗 **[View Live Application](https://mahak1315.github.io/ShopSwift_e-commerce-website/)**
 
 ---
 
-## ✨ Features
+## Overview
 
-- 🛒 **21 Products** across 5 categories — Electronics, Clothing, Beauty, Accessories, Footwear
-- 🔐 **User Authentication** — Register and login with JWT tokens
-- 🧠 **AI Shopping Assistant** — Ask questions like "show me products under ₹1000" or "what electronics do you have?"
-- 💾 **Persistent Cart** — Cart saves to MongoDB when logged in, localStorage when logged out
-- 🔄 **Guest Cart Merge** — Items added before login are preserved after logging in
-- 📱 **Responsive Design** — Works on mobile and desktop
-- 🚀 **Fully Deployed** — Backend on Render, Frontend on GitHub Pages
+ShopSwift is a complete e-commerce platform featuring 21 products across 5 categories. Users can browse products, manage a cart, create an account, and interact with an AI assistant that answers product-related queries in natural language.
 
 ---
 
-## 🛠️ Tech Stack
+## Features
+
+- **Product Catalogue** — 21 products across Electronics, Clothing, Beauty, Accessories, and Footwear
+- **User Authentication** — Secure register and login with JWT-based session management
+- **Smart Cart** — Cart persists in MongoDB for logged-in users; falls back to localStorage for guests. Guest cart merges on login
+- **AI Shopping Assistant** — Natural language product queries powered by Groq (Llama 3.3 70B)
+- **Responsive UI** — Works across desktop and mobile browsers
+
+---
+
+## Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|-----------|---------|
-| HTML5, CSS3 | Structure and styling |
-| JavaScript (ES6+) | All frontend logic |
-| Bootstrap 5 | UI components and responsive grid |
+```
+HTML5 · CSS3 · JavaScript (ES6+) · Bootstrap 5
+```
 
 ### Backend
-| Technology | Purpose |
-|-----------|---------|
-| Node.js | Server runtime |
-| Express.js | Web framework and routing |
-| MongoDB Atlas | Cloud database |
-| Mongoose | MongoDB object modeling |
-| JWT (jsonwebtoken) | Stateless authentication |
-| bcryptjs | Password hashing |
-| Groq API (Llama 3.3) | AI shopping assistant |
+```
+Node.js · Express.js · MongoDB Atlas · Mongoose
+JWT Authentication · bcryptjs · Groq API
+```
 
 ### Deployment
-| Platform | What it hosts |
-|---------|--------------|
-| GitHub Pages | Frontend (index.html, style.css, script.js) |
-| Render | Backend (Node.js + Express API) |
-| MongoDB Atlas | Database (users, products, carts) |
+```
+Frontend → GitHub Pages
+Backend  → Render
+Database → MongoDB Atlas
+```
 
 ---
 
-## 🤖 AI Assistant
+## API Reference
 
-The AI shopping assistant uses a **RAG-style architecture**:
-
-1. User sends a message via the chat widget
-2. Backend fetches all 21 products from MongoDB
-3. Products are injected into the AI prompt as context
-4. Groq (Llama 3.3 70B) generates a response based on real product data
-5. Response is displayed in the chat widget
-
-**Try asking:**
-- "Show me products under ₹1000"
-- "What electronics do you have?"
-- "Compare the two perfumes"
-- "Recommend something for gifting under ₹2000"
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | /api/products | — | Fetch all products |
+| GET | /api/products/:id | — | Fetch single product |
+| POST | /api/auth/register | — | Create new account |
+| POST | /api/auth/login | — | Login and receive token |
+| GET | /api/cart | ✅ | Get user's cart |
+| POST | /api/cart | ✅ | Save cart |
+| DELETE | /api/cart | ✅ | Clear cart |
+| POST | /api/ai/chat | — | Query AI assistant |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ShopSwift_e-commerce-website/
-├── index.html              # Main page
-├── style.css               # Styles
-├── script.js               # Frontend logic (cart, auth, products, AI chat)
-├── photos/                 # Product images
-│
+├── index.html
+├── style.css
+├── script.js
+├── photos/
 └── backend/
-    ├── server.js           # Express server entry point
-    ├── seeder.js           # Script to seed products into MongoDB
-    ├── config/
-    │   └── db.js           # MongoDB connection
+    ├── server.js
+    ├── config/db.js
     ├── models/
-    │   ├── User.js         # User schema with password hashing
-    │   ├── Product.js      # Product schema
-    │   └── Cart.js         # Per-user cart schema
+    │   ├── User.js
+    │   ├── Product.js
+    │   └── Cart.js
     ├── routes/
-    │   ├── auth.js         # POST /api/auth/register and /login
-    │   ├── products.js     # GET /api/products
-    │   ├── cart.js         # GET/POST/DELETE /api/cart (protected)
-    │   └── ai.js           # POST /api/ai/chat
-    ├── middleware/
-    │   └── auth.js         # JWT verification middleware
-    └── utils/
-        └── generateToken.js # JWT token generator
+    │   ├── auth.js
+    │   ├── products.js
+    │   ├── cart.js
+    │   └── ai.js
+    ├── middleware/auth.js
+    └── utils/generateToken.js
 ```
 
 ---
 
-## 🚀 Running Locally
-
-### Prerequisites
-- Node.js v18+
-- MongoDB Atlas account (free)
-- Groq API key (free at console.groq.com)
-
-### Backend Setup
+## Local Setup
 
 ```bash
-# Clone the repository
+# Clone the repo
 git clone https://github.com/Mahak1315/ShopSwift_e-commerce-website.git
-cd ShopSwift_e-commerce-website/backend
 
-# Install dependencies
+# Install backend dependencies
+cd ShopSwift_e-commerce-website/backend
 npm install
 
-# Create .env file
-cp .env.example .env
-# Fill in your values in .env
+# Configure environment variables
+# Create a .env file with the following:
+# PORT=5000
+# MONGO_URI=your_mongodb_uri
+# JWT_SECRET=your_secret_key
+# GROQ_API_KEY=your_groq_key
 
-# Seed the database with products
+# Seed the database
 npm run seed
 
-# Start the development server
+# Start the server
 npm run dev
 ```
-
-### Environment Variables
-
-Create a `.env` file inside the `backend` folder:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-GROQ_API_KEY=your_groq_api_key
-```
-
-### Frontend Setup
-
-Open `index.html` with Live Server in VS Code, or update `API_URL` in `script.js` to `http://localhost:5000` for local testing.
-
----
-
-## 📡 API Endpoints
-
-### Auth
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST | /api/auth/register | Register a new user |
-| POST | /api/auth/login | Login and receive JWT token |
-
-### Products
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET | /api/products | Get all products |
-| GET | /api/products/:id | Get product by ID |
-
-### Cart (Protected — requires JWT)
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET | /api/cart | Get logged-in user's cart |
-| POST | /api/cart | Save/update cart |
-| DELETE | /api/cart | Clear cart |
-
-### AI
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| POST | /api/ai/chat | Send message to AI assistant |
-
----
-
-## 👩‍💻 Author
-
-**Mahak**
-B.Tech Electronics and Communication Engineering
-Punjab Engineering College (PEC), Chandigarh
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
